@@ -60,6 +60,20 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void calculate_total_when_selecting_items_from_menu() {
+        restaurant = createRestaurantObject();
+        restaurant.addToMenu("Pizza", 200);
+        restaurant.addToMenu("Burger", 300);
+
+        ArrayList<String> selectedItems = new ArrayList<>();
+        selectedItems.add("Burger");
+        selectedItems.add("Pizza");
+
+        int total = restaurant.getItemsTotal(selectedItems);
+        assertEquals(500, total);
+    }
+
     private Restaurant createRestaurantObject() {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
